@@ -1,0 +1,36 @@
+<main class="login-page">
+  <section class="brand-panel">
+    <img src="assets/brand/logo.jpeg" alt="AllDigi" class="logo">
+    <div>
+      <p class="eyebrow">Private RAG platform</p>
+      <h1>Document intelligence admin console</h1>
+      <p class="copy">Ingest internal knowledge, monitor indexing, and inspect audit trails from inside the company network.</p>
+    </div>
+  </section>
+
+  <form class="login-card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="lock">
+      <lucide-icon name="lock-keyhole" class="icon" aria-hidden="true" />
+    </div>
+    <h2>Admin sign in</h2>
+
+    <label>
+      <span>Email</span>
+      <input type="email" autocomplete="email" formControlName="email" placeholder="admin@company.local">
+    </label>
+
+    <label>
+      <span>Password</span>
+      <input type="password" autocomplete="current-password" formControlName="password" placeholder="••••••••">
+    </label>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <button type="submit" [disabled]="busy()">
+      <lucide-icon name="log-in" class="icon" aria-hidden="true" />
+      <span>{{ busy() ? 'Signing in' : 'Sign in' }}</span>
+    </button>
+  </form>
+</main>

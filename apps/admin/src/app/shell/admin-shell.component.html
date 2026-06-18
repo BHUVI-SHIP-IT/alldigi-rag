@@ -1,0 +1,42 @@
+<div class="layout">
+  <aside>
+    <div class="brand">
+      <img src="assets/brand/logo.jpeg" alt="AllDigi">
+      <div>
+        <strong>RAG Admin</strong>
+        <span>On-prem console</span>
+      </div>
+    </div>
+
+    <nav aria-label="Admin navigation">
+      <a routerLink="/documents" routerLinkActive="active">
+        <lucide-icon name="file-stack" class="icon" aria-hidden="true" />
+        <span>Documents</span>
+      </a>
+      <a routerLink="/audit" routerLinkActive="active">
+        <lucide-icon name="clipboard-list" class="icon" aria-hidden="true" />
+        <span>Audit</span>
+      </a>
+    </nav>
+
+    <button type="button" class="logout" (click)="auth.logout()">
+      <lucide-icon name="log-out" class="icon" aria-hidden="true" />
+      <span>Sign out</span>
+    </button>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p>Administrator</p>
+        <h1>{{ auth.email() }}</h1>
+      </div>
+      <div class="network">
+        <lucide-icon name="shield-check" class="icon" aria-hidden="true" />
+        <span>Private network</span>
+      </div>
+    </header>
+
+    <router-outlet />
+  </main>
+</div>

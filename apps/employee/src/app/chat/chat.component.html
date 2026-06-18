@@ -1,0 +1,80 @@
+<main class="chat-page">
+  <aside>
+    <div class="brand">
+      <img src="assets/brand/logo.jpeg" alt="AllDigi">
+      <div>
+        <strong>Knowledge Chat</strong>
+        <span>{{ auth.email() }}</span>
+      </div>
+    </div>
+
+    <div class="trust">
+      <lucide-icon name="shield-check" class="icon" aria-hidden="true" />
+      <span>Local model, private retrieval, cited sources</span>
+    </div>
+
+    <button type="button" class="logout" (click)="auth.logout()">
+      <lucide-icon name="log-out" class="icon" aria-hidden="true" />
+      <span>Sign out</span>
+    </button>
+  </aside>
+
+  <section class="conversation">
+    <header>
+      <div>
+        <p>Employee assistant</p>
+        <h1>Ask company knowledge</h1>
+      </div>
+      <div class="badge">
+        <lucide-icon name="book-open-check" class="icon" aria-hidden="true" />
+        <span>Source-backed</span>
+      </div>
+    </header>
+
+    <div class="messages" aria-live="polite">
+      @for (message of messages(); track message.id) {
+        <article class="message" [class.user]="message.role === 'user'">
+          <div class="bubble">
+            <p>{{ message.content }}</p>
+            @if (message.pending) {
+              <span class="typing">Streaming answer</span>
+            }
+            @if (message.sources.length) {
+              <div class="sources" aria-label="Sources">
+                @for (source of message.sources; track source) {
+                  <span>{{ source }}</span>
+                }
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <form class="composer" (ngSubmit)="send()">
+      <textarea
+        rows="1"
+        placeholder="Ask about HR policy, compliance, onboarding, or internal procedures"
+        [ngModel]="draft()"
+        (ngModelChange)="draft.set($event)"
+        name="question"
+      ></textarea>
+
+      @if (busy()) {
+        <button type="button" class="stop" (click)="stop()" title="Stop response">
+          <lucide-icon name="square" class="icon" aria-hidden="true" />
+          <span class="sr-only">Stop</span>
+        </button>
+      } @else {
+        <button type="submit" class="send" [disabled]="!canSend()" title="Send question">
+          <lucide-icon name="send" class="icon" aria-hidden="true" />
+          <span class="sr-only">Send</span>
+        </button>
+      }
+    </form>
+  </section>
+</main>

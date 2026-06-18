@@ -1,0 +1,3 @@
+Mock API listening on http://127.0.0.1:4300
+Login: any email + any 6+ char password.
+  -> email containing "admin" = Admin role, otherwise Employee.

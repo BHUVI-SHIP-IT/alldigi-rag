@@ -1,0 +1,35 @@
+<section class="audit-panel">
+  <div class="heading">
+    <div>
+      <h2>Query audit trail</h2>
+      <p>Every employee query is logged with retrieved sources for compliance review.</p>
+    </div>
+    <button type="button" [disabled]="loading()" (click)="refresh()" title="Refresh audit log">
+      <lucide-icon name="refresh-cw" class="icon" aria-hidden="true" />
+      <span class="sr-only">Refresh</span>
+    </button>
+  </div>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="audit-list">
+    @for (log of logs(); track log.id) {
+      <article>
+        <div class="meta">
+          <strong>{{ log.userEmail }}</strong>
+          <span>{{ log.createdAt | date:'medium' }}</span>
+        </div>
+        <p class="query">{{ log.query }}</p>
+        <div class="sources" aria-label="Retrieved sources">
+          @for (source of log.retrievedSources; track source) {
+            <span>{{ source }}</span>
+          }
+        </div>
+      </article>
+    } @empty {
+      <p class="empty">No audit records found.</p>
+    }
+  </div>
+</section>

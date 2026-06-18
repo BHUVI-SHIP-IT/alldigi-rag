@@ -1,0 +1,36 @@
+<main class="login-page">
+  <section class="hero">
+    <img src="assets/brand/logo.jpeg" alt="AllDigi" class="logo">
+    <div>
+      <p class="eyebrow">Private knowledge chat</p>
+      <h1>Ask internal documents without leaving the network</h1>
+      <p class="copy">Answers stream from local retrieval, local embeddings, and the on-prem model with cited source documents.</p>
+    </div>
+  </section>
+
+  <form class="login-card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="lock">
+      <lucide-icon name="message-square-lock" class="icon" aria-hidden="true" />
+    </div>
+    <h2>Employee sign in</h2>
+
+    <label>
+      <span>Email</span>
+      <input type="email" autocomplete="email" formControlName="email" placeholder="employee@company.local">
+    </label>
+
+    <label>
+      <span>Password</span>
+      <input type="password" autocomplete="current-password" formControlName="password" placeholder="••••••••">
+    </label>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <button type="submit" [disabled]="busy()">
+      <lucide-icon name="log-in" class="icon" aria-hidden="true" />
+      <span>{{ busy() ? 'Signing in' : 'Sign in' }}</span>
+    </button>
+  </form>
+</main>

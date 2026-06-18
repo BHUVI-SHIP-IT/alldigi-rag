@@ -1,0 +1,27 @@
+
+> digitide-rag-frontend@0.1.0 start:admin
+> ng serve admin --host 0.0.0.0 --port 4201 --serve-path /admin/
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m                [2m | [22m [1mRaw size[22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m            [2m | [22m [36m90.20 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m                 [2m | [22m  [36m3.72 kB[39m[2m | [22m
+[32mchunk-BQTPZIS6.js[39m  [2m | [22m[2m-[22m                    [2m | [22m  [36m2.83 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m               [2m | [22m  [36m1.06 kB[39m[2m | [22m
+[32mchunk-RMIEMMQJ.js[39m  [2m | [22m[2m-[22m                    [2m | [22m[36m156 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m        [2m | [22m [1m97.96 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m                [2m | [22m [1mRaw size[22m
+[32mchunk-E7E3HIVY.js[39m  [2m | [22m[2mdocuments-component[22m  [2m | [22m [36m17.78 kB[39m[2m | [22m
+[32mchunk-UNCHJNSV.js[39m  [2m | [22m[2mlogin-component[22m      [2m | [22m  [36m8.27 kB[39m[2m | [22m
+[32mchunk-IWBCQXMD.js[39m  [2m | [22m[2maudit-component[22m      [2m | [22m  [36m8.20 kB[39m[2m | [22m
+[32mchunk-GGC2TZ2S.js[39m  [2m | [22m[2madmin-shell-component[22m[2m | [22m  [36m6.84 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.807 seconds]
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4201[22m/admin/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.0.101:[1m4201[22m/admin/[39m

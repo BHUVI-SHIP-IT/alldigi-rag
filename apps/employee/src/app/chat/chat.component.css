@@ -1,0 +1,257 @@
+.chat-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+}
+
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  color: white;
+  background:
+    linear-gradient(180deg, rgba(10, 29, 25, 0.76), rgba(10, 29, 25, 0.95)),
+    url('/assets/brand/alldigi.jpg') center / cover;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  background: white;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.brand strong,
+.brand span {
+  display: block;
+}
+
+.brand span {
+  max-width: 190px;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.82rem;
+}
+
+.trust {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 14px;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  line-height: 1.45;
+}
+
+.logout {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 0 12px;
+  color: white;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  font-weight: 800;
+}
+
+.conversation {
+  min-width: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  padding: 26px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+}
+
+header p,
+header h1 {
+  margin: 0;
+}
+
+header p {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+header h1 {
+  margin-top: 5px;
+  font-size: 1.55rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  color: var(--brand-2);
+  background: #eaf1fb;
+  border: 1px solid #cbdcf3;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.messages {
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 10px 2px 24px;
+}
+
+.message {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: min(760px, 92%);
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 8px 26px rgba(23, 32, 27, 0.06);
+}
+
+.message.user .bubble {
+  color: white;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.bubble p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.62;
+}
+
+.typing {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.sources span {
+  padding: 6px 10px;
+  color: var(--brand);
+  background: #e8f4f0;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.error {
+  margin: 0 0 12px;
+  color: var(--danger);
+  font-weight: 800;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px;
+  gap: 10px;
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+textarea {
+  width: 100%;
+  min-height: 48px;
+  max-height: 160px;
+  resize: vertical;
+  padding: 13px 14px;
+  color: var(--text);
+  background: #fbfcfd;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: 0;
+  line-height: 1.45;
+}
+
+textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(19, 111, 99, 0.12);
+}
+
+.send,
+.stop {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 6px;
+}
+
+.send {
+  background: var(--brand);
+}
+
+.stop {
+  background: var(--danger);
+}
+
+@media (max-width: 820px) {
+  .chat-page {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: static;
+    height: auto;
+  }
+
+  .conversation {
+    height: calc(100vh - 194px);
+    padding: 18px;
+  }
+
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

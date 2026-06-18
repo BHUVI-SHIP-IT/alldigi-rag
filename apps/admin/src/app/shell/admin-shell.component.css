@@ -1,0 +1,141 @@
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+}
+
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  background: #101820;
+  color: white;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  background: white;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.brand strong,
+.brand span {
+  display: block;
+}
+
+.brand span {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.82rem;
+}
+
+nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+nav a,
+.logout {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+nav a.active {
+  color: white;
+  background: rgba(31, 138, 112, 0.28);
+}
+
+.logout {
+  margin-top: auto;
+  background: transparent;
+}
+
+main {
+  min-width: 0;
+  padding: 26px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+header p,
+header h1 {
+  margin: 0;
+}
+
+header p {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+header h1 {
+  margin-top: 5px;
+  font-size: 1.45rem;
+  overflow-wrap: anywhere;
+}
+
+.network {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  color: var(--ok);
+  background: #e8f5ef;
+  border: 1px solid #c8e6d8;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: static;
+    height: auto;
+  }
+
+  nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .logout {
+    margin-top: 18px;
+  }
+
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

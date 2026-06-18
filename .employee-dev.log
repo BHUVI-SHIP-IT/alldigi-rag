@@ -1,0 +1,31 @@
+
+> digitide-rag-frontend@0.1.0 start:employee
+> ng serve employee --host 0.0.0.0 --port 4200
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m      [2m | [22m[36m90.20 kB[39m[2m | [22m
+[32mchunk-SKN7A7Y5.js[39m  [2m | [22m[2m-[22m              [2m | [22m [36m4.33 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m           [2m | [22m [36m3.26 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m         [2m | [22m [36m1.01 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m  [2m | [22m[1m98.80 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m          [2m | [22m[1mRaw size[22m
+[32mchunk-C7AYFTBD.js[39m  [2m | [22m[2mchat-component[22m [2m | [22m[36m19.03 kB[39m[2m | [22m
+[32mchunk-R6PWORXG.js[39m  [2m | [22m[2mlogin-component[22m[2m | [22m [36m8.19 kB[39m[2m | [22m
+
+Application bundle generation complete. [4.897 seconds]
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.0.101:[1m4200[22m/[39m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.519 seconds]
+

@@ -1,0 +1,100 @@
+<section class="metrics" aria-label="Document metrics">
+  <article>
+    <span>Total documents</span>
+    <strong>{{ documents().length }}</strong>
+  </article>
+  <article>
+    <span>Indexed</span>
+    <strong>{{ indexedCount() }}</strong>
+  </article>
+  <article>
+    <span>In progress</span>
+    <strong>{{ processingCount() }}</strong>
+  </article>
+</section>
+
+<section class="workspace">
+  <div class="upload-panel">
+    <div>
+      <h2>Upload knowledge source</h2>
+      <p>PDF and DOCX files are stored in MinIO, chunked, embedded, and indexed for employee search.</p>
+    </div>
+
+    <label class="drop-zone">
+      <lucide-icon name="upload-cloud" class="drop-icon" aria-hidden="true" />
+      <span>{{ selectedFile()?.name ?? 'Choose a PDF or DOCX file' }}</span>
+      <input class="sr-only" type="file" accept=".pdf,.docx,application/pdf" (change)="chooseFile($event)">
+    </label>
+
+    <button type="button" class="primary" [disabled]="!selectedFile() || uploading()" (click)="upload()">
+      <lucide-icon name="file-up" class="icon" aria-hidden="true" />
+      <span>{{ uploading() ? 'Uploading' : 'Upload' }}</span>
+    </button>
+
+    @if (uploadResult()) {
+      <p class="success">{{ uploadResult() }}</p>
+    }
+  </div>
+
+  <div class="table-panel">
+    <div class="table-toolbar">
+      <div>
+        <h2>Document inventory</h2>
+        <p>Indexing status refreshes automatically.</p>
+      </div>
+      <div class="actions">
+        <label class="search">
+          <lucide-icon name="search" class="icon" aria-hidden="true" />
+          <input
+            type="search"
+            placeholder="Search files"
+            [ngModel]="query()"
+            (ngModelChange)="query.set($event)"
+          >
+        </label>
+        <button type="button" class="ghost" [disabled]="loading()" (click)="refresh()" title="Refresh documents">
+          <lucide-icon name="refresh-cw" class="icon" aria-hidden="true" />
+          <span class="sr-only">Refresh</span>
+        </button>
+      </div>
+    </div>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Status</th>
+            <th>Chunks</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (document of filteredDocuments(); track document.id) {
+            <tr>
+              <td>
+                <strong>{{ document.fileName }}</strong>
+                <span>{{ document.id }}</span>
+              </td>
+              <td>
+                <span class="status" [class.indexed]="document.status === 'indexed'" [class.failed]="document.status === 'failed'">
+                  {{ statusLabel(document.status) }}
+                </span>
+              </td>
+              <td>{{ document.chunkCount ?? '-' }}</td>
+              <td>{{ document.createdAt | date:'medium' }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" class="empty">No documents found.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
