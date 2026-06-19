@@ -1,0 +1,22 @@
+# docker-compose.dev.yml — local development override
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+#
+# What this override does:
+#   1. Exposes the .NET API on host port 4300 so the Angular dev proxy
+#      (proxy.conf.json → http://127.0.0.1:4300) can reach it.
+#   2. Disables nginx — the frontends are served by `ng serve` locally.
+#   3. Sets ASPNETCORE_ENVIRONMENT to Development for verbose logging.
+
+services:
+  api:
+    ports:
+      - "4300:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
+  # Disable nginx in dev — Angular dev servers handle the frontends.
+  nginx:
+    profiles:
+      - disabled
